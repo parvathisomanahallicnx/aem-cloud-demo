@@ -127,6 +127,7 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+
   loadFonts();
 }
 
@@ -137,8 +138,40 @@ async function loadLazy(doc) {
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => import('./custom.js'), 3000);
   // load anything that can be postponed to the latest here
 }
+
+function loadTestimonialCarousel(){
+    var owl=$('.testimonial-carousel');
+    owl.owlCarousel({
+        items:3,
+        margin:0,
+        
+        loop:true,
+        autoplay:true,
+        smartSpeed:1000,
+        dots:false,
+        autoplayHoverPause:false,
+    
+        responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                640:{
+                    items:2
+                },
+                992:{
+                    items:3
+                }
+            }
+        
+        
+    });
+
+}
+
 
 async function loadPage() {
   await loadEager(document);
