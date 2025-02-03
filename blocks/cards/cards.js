@@ -1,7 +1,14 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 
-export default function decorate(block) {
+export default async function decorate(block) {
   /* change to ul, li */
+  const locale = getMetadata('locale');
+  const placeholders = await fetchPlaceholders(locale);
+  console.log(placeholders);
+  console.log(placeholders.cardsTitle);
+  block.setAttribute('aria-label', placeholders.cardstitle || 'Cards Used for Displaying Content in a Grid Layout');
+  
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');

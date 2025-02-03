@@ -4,12 +4,13 @@ version: 1
 indices:
   site:
     include:
-      - '/mysite/**'
+      - '**'
     exclude:
       - '**/Document.*'
-    # target: SharePoint URL of your query index, e.g. <shared-folder-url>/query-index.xlsx
+    target: /query-index.json
     properties:
       author:
+      # CSS Selector to extract the author from the page
         select: head > meta[name="author"]
         value: |
           attribute(el, 'content')
@@ -37,6 +38,10 @@ indices:
         select: head > meta[name="topics"]
         value: |
           attribute(el, 'content')
+      cardsContent:
+        select: body > div[class="cards-card-body"]
+        value: |
+          attribute(el, 'content')    
       lastModified:
         select: none
         value: |
