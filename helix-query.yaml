@@ -39,7 +39,7 @@ indices:
         value: |
           attribute(el, 'content')
       cardsContent:
-        select: main > .section > div[class="cards-card-body"]
+        select: div[class="cards-card-body"]
         value: |
           attribute(el, 'content')    
       lastModified:
