@@ -39,7 +39,7 @@ indices:
         value: |
           attribute(el, 'content')
       cardsContent:
-        select: div.cards-card-body
+        select: .cards-card-body
         value: |
           attribute(el, 'content')    
       lastModified:
